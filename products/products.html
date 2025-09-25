@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Tech Bazzar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<!-- Cart Modal -->
+<div class="cart-modal" id="cartModal">
+    <div class="cart-modal-overlay"></div>
+    <div class="cart-modal-content">
+        <div class="cart-modal-header">
+            <h3>Shopping Cart</h3>
+            <button class="cart-close-btn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="cart-content">
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be dynamically added here -->
+                <div class="empty-cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <p>Your cart is empty</p>
+                    <a href="#products" class="btn-primary">Start Shopping</a>
+                </div>
+            </div>
+            
+            <div class="cart-summary">
+                <div class="cart-totals">
+                    <div class="cart-total-row">
+                        <span>Subtotal:</span>
+                        <span class="cart-subtotal">$0.00</span>
+                    </div>
+                    <div class="cart-total-row">
+                        <span>Shipping:</span>
+                        <span class="cart-shipping">$0.00</span>
+                    </div>
+                    <div class="cart-total-row">
+                        <span>Tax:</span>
+                        <span class="cart-tax">$0.00</span>
+                    </div>
+                    <div class="cart-total-row total">
+                        <span>Total:</span>
+                        <span class="cart-total">$0.00</span>
+                    </div>
+                </div>
+                
+                <<!-- في قسم cart-summary، تأكد من وجود زر الدفع -->
+                <div class="cart-actions">
+                    <button class="btn-continue-shopping">Continue Shopping</button>
+                    <a href="D:\frotend_projects\IN PROGRESS\e-commerce project\checkout\checkout.html"><button class="btn-checkout">Proceed to Checkout</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="D:\frotend_projects\IN PROGRESS\e-commerce project\home\image\logo.png" alt="Tech Bazzar Logo" class="logo-img">
+                <p>Tech Bazzar</p>
+            </div>
+            
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="/frotend_projects/IN PROGRESS/e-commerce project/home/HOME.html" class="nav-link">Home</a></li>
+                    <li><a href="products.html" class="nav-link active">Products</a></li>
+                    <li><a href="/frotend_projects/IN PROGRESS/e-commerce project/home/HOME.html#about" class="nav-link">About Us</a></li>
+                    <li><a href="/frotend_projects/IN PROGRESS/e-commerce project/home/HOME.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+                
+                <div class="nav-right">
+                    <a href="D:\frotend_projects\IN PROGRESS\e-commerce project\login\login.html"><button class="login-btn">
+                    <i class="fas fa-user"></i>
+                    <span>Login/Register</span>
+                </button></a>
+                    <button class="language-btn" aria-label="Change language">
+                        <i class="fa-solid fa-globe"></i>
+                    </button>
+                    <a href="#cart" class="cart-btn" aria-label="Shopping cart">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-count">3</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Products Hero Section -->
+    <section class="products-hero">
+        <h1>Our Products</h1>
+        <p>Discover quality used electronics at unbeatable prices. Shop with confidence and upgrade your technology with our certified pre-owned devices.</p>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-container">
+        <div class="products-header">
+            <h2 class="products-title">All Products</h2>
+            <div class="products-controls">
+                <button class="filter-btn">
+                    <i class="fas fa-filter"></i>
+                    <span>Filters</span>
+                </button>
+                <select class="sort-select">
+                    <option value="popular">Sort by: Most Popular</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                    <option value="newest">Newest First</option>
+                    <option value="rating">Highest Rated</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="products-content">
+            <aside class="filters-sidebar">
+                <div class="filter-section">
+                    <h3 class="filter-title">Categories</h3>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="laptops" checked>
+                            <label for="laptops">Laptops</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="smartphones" checked>
+                            <label for="smartphones">Smartphones</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="tablets">
+                            <label for="tablets">Tablets</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="accessories">
+                            <label for="accessories">Accessories</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-section">
+                    <h3 class="filter-title">Price Range</h3>
+                    <div class="price-range">
+                        <div class="price-inputs">
+                            <input type="number" placeholder="Min" value="50">
+                            <input type="number" placeholder="Max" value="1500">
+                        </div>
+                        <div class="price-slider">
+                            <div class="price-slider-fill" style="left: 10%; right: 20%;"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-section">
+                    <h3 class="filter-title">Condition</h3>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="excellent" checked>
+                            <label for="excellent">Excellent</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="good" checked>
+                            <label for="good">Good</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="fair">
+                            <label for="fair">Fair</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="filter-section">
+                    <h3 class="filter-title">Brand</h3>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="apple" checked>
+                            <label for="apple">Apple</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="samsung" checked>
+                            <label for="samsung">Samsung</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="dell">
+                            <label for="dell">Dell</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="hp">
+                            <label for="hp">HP</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="lenovo">
+                            <label for="lenovo">Lenovo</label>
+                        </div>
+                    </div>
+                </div>
+                
+                <button class="btn-add-cart" style="width: 100%; margin-top: 10px;">
+                    Apply Filters
+                </button>
+            </aside>
+            
+            <div class="products-grid">
+                <!-- Product Card 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="MacBook Pro">
+                        <div class="product-badge">Certified</div>
+                        <div class="product-wishlist">
+                            <i class="far fa-heart"></i>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Laptop</div>
+                        <h3 class="product-title">Apple MacBook Pro 13" 2020</h3>
+                        <div class="product-rating">
+                            <div class="product-rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="product-rating-count">(128)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="product-price-current">$899</span>
+                            <span class="product-price-original">$1299</span>
+                            <span class="product-price-discount">30% OFF</span>
+                        </div>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> Intel Core i5</li>
+                            <li><i class="fas fa-check"></i> 8GB RAM, 256GB SSD</li>
+                            <li><i class="fas fa-check"></i> Retina Display</li>
+                            <li><i class="fas fa-check"></i> 6-Month Warranty</li>
+                        </ul>
+                        <div class="product-actions">
+                            <button class="btn-add-cart">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                            <button class="btn-view">View</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product Card 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="iPhone 12">
+                        <div class="product-badge">Like New</div>
+                        <div class="product-wishlist">
+                            <i class="far fa-heart"></i>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Smartphone</div>
+                        <h3 class="product-title">iPhone 12 128GB - Blue</h3>
+                        <div class="product-rating">
+                            <div class="product-rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="product-rating-count">(94)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="product-price-current">$649</span>
+                            <span class="product-price-original">$799</span>
+                            <span class="product-price-discount">19% OFF</span>
+                        </div>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> A14 Bionic Chip</li>
+                            <li><i class="fas fa-check"></i> Dual Camera System</li>
+                            <li><i class="fas fa-check"></i> 5G Capable</li>
+                            <li><i class="fas fa-check"></i> 6-Month Warranty</li>
+                        </ul>
+                        <div class="product-actions">
+                            <button class="btn-add-cart">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                            <button class="btn-view">View</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product Card 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Samsung Tablet">
+                        <div class="product-badge">Best Value</div>
+                        <div class="product-wishlist">
+                            <i class="far fa-heart"></i>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Tablet</div>
+                        <h3 class="product-title">Samsung Galaxy Tab S7 11"</h3>
+                        <div class="product-rating">
+                            <div class="product-rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="product-rating-count">(67)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="product-price-current">$499</span>
+                            <span class="product-price-original">$649</span>
+                            <span class="product-price-discount">23% OFF</span>
+                        </div>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> Snapdragon 865+</li>
+                            <li><i class="fas fa-check"></i> 6GB RAM, 128GB Storage</li>
+                            <li><i class="fas fa-check"></i> S Pen Included</li>
+                            <li><i class="fas fa-check"></i> 6-Month Warranty</li>
+                        </ul>
+                        <div class="product-actions">
+                            <button class="btn-add-cart">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                            <button class="btn-view">View</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product Card 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Wireless Headphones">
+                        <div class="product-badge">New Arrival</div>
+                        <div class="product-wishlist">
+                            <i class="far fa-heart"></i>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Accessories</div>
+                        <h3 class="product-title">Sony WH-1000XM4 Headphones</h3>
+                        <div class="product-rating">
+                            <div class="product-rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="product-rating-count">(203)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="product-price-current">$249</span>
+                            <span class="product-price-original">$349</span>
+                            <span class="product-price-discount">29% OFF</span>
+                        </div>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> Industry Leading Noise Cancellation</li>
+                            <li><i class="fas fa-check"></i> 30-Hour Battery</li>
+                            <li><i class="fas fa-check"></i> Touch Control</li>
+                            <li><i class="fas fa-check"></i> 6-Month Warranty</li>
+                        </ul>
+                        <div class="product-actions">
+                            <button class="btn-add-cart">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                            <button class="btn-view">View</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product Card 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Dell Laptop">
+                        <div class="product-badge">Certified</div>
+                        <div class="product-wishlist">
+                            <i class="far fa-heart"></i>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Laptop</div>
+                        <h3 class="product-title">Dell XPS 13 9310 Laptop</h3>
+                        <div class="product-rating">
+                            <div class="product-rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                            </div>
+                            <span class="product-rating-count">(56)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="product-price-current">$999</span>
+                            <span class="product-price-original">$1299</span>
+                            <span class="product-price-discount">23% OFF</span>
+                        </div>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> Intel Core i7-1195G7</li>
+                            <li><i class="fas fa-check"></i> 16GB RAM, 512GB SSD</li>
+                            <li><i class="fas fa-check"></i> 13.4" FHD+ Display</li>
+                            <li><i class="fas fa-check"></i> 6-Month Warranty</li>
+                        </ul>
+                        <div class="product-actions">
+                            <button class="btn-add-cart">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                            <button class="btn-view">View</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product Card 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1592750475338-74b7b21085ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Smart Watch">
+                        <div class="product-badge">Refurbished</div>
+                        <div class="product-wishlist">
+                            <i class="far fa-heart"></i>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <div class="product-category">Wearable</div>
+                        <h3 class="product-title">Apple Watch Series 6 44mm</h3>
+                        <div class="product-rating">
+                            <div class="product-rating-stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span class="product-rating-count">(142)</span>
+                        </div>
+                        <div class="product-price">
+                            <span class="product-price-current">$299</span>
+                            <span class="product-price-original">$399</span>
+                            <span class="product-price-discount">25% OFF</span>
+                        </div>
+                        <ul class="product-features">
+                            <li><i class="fas fa-check"></i> GPS + Cellular</li>
+                            <li><i class="fas fa-check"></i> Blood Oxygen Sensor</li>
+                            <li><i class="fas fa-check"></i> Always-On Retina Display</li>
+                            <li><i class="fas fa-check"></i> 6-Month Warranty</li>
+                        </ul>
+                        <div class="product-actions">
+                            <button class="btn-add-cart">
+                                <i class="fas fa-shopping-cart"></i> Add to Cart
+                            </button>
+                            <button class="btn-view">View</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pagination -->
+        <div class="pagination">
+            <div class="pagination-btn">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="pagination-btn active">1</div>
+            <div class="pagination-btn">2</div>
+            <div class="pagination-btn">3</div>
+            <div class="pagination-dots">...</div>
+            <div class="pagination-btn">8</div>
+            <div class="pagination-btn">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="brand-logo">TB</div>
+                <div class="brand-info">
+                    <h3>Tech Bazzar</h3>
+                    <p>Your trusted source for quality used electronics</p>
+                </div>
+            </div>
+            <div class="footer-columns">
+                <div class="col">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="#">Laptops</a></li>
+                        <li><a href="#">Smartphones</a></li>
+                        <li><a href="#">Tablets</a></li>
+                        <li><a href="#">Accessories</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Warranty</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="col">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">YouTube</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="copyright">© 2023 Tech Bazzar. All rights reserved.</div>
+            <div class="policies">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js">
+       
+    </script>
+</body>
+</html>

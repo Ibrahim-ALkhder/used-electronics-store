@@ -1,0 +1,18 @@
+{
+    "sourceFile": "styleguide.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1758575615414,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1758575615414,
+            "name": "Commit-0",
+            "content": ":root {\r\n  --single-line-body-base-font-family: \"Inter\", Helvetica;\r\n  --single-line-body-base-font-weight: 400;\r\n  --single-line-body-base-font-size: 16px;\r\n  --single-line-body-base-letter-spacing: 0px;\r\n  --single-line-body-base-line-height: 100%;\r\n  --single-line-body-base-font-style: normal;\r\n  --size-space-200: 8px;\r\n  --size-space-300: 12px;\r\n  --size-radius-200: 8px;\r\n}"
+        }
+    ]
+}

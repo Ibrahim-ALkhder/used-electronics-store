@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard - Tech Bazzar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+    <!-- Toggle Sidebar Button (Mobile) -->
+    <button class="toggle-sidebar" id="toggleSidebar">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiByeD0iOCIgZmlsbD0iIzI2NTc1QiIvPgo8cGF0aCBkPSJNMTAgMTVIMzBWMjVIMTBWMTVaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTUgMTBIMjVWMzBIMTVWMTAiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=" alt="Tech Bazzar">
+                <h2>Seller Dashboard</h2>
+            </div>
+            <div class="sidebar-menu">
+                <a href="#" class="menu-item active" data-section="dashboard">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="menu-item" data-section="products">
+                    <i class="fas fa-box"></i>
+                    <span>Products</span>
+                    <span class="menu-badge">24</span>
+                </a>
+                <a href="#" class="menu-item" data-section="customers">
+                    <i class="fas fa-users"></i>
+                    <span>Customers</span>
+                </a>
+                <a href="#" class="menu-item" data-section="analytics">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Analytics</span>
+                </a>
+                <a href="#" class="menu-item" data-section="settings">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Top Header -->
+            <div class="top-header">
+                <div class="page-title">
+                    <h1 id="pageTitle">Seller Dashboard</h1>
+                    <p id="pageSubtitle">Welcome back, TechStore! Here's your business overview.</p>
+                </div>
+                <div class="header-actions">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search orders, products...">
+                    </div>
+                    <div class="user-menu">
+                        <div class="user-avatar">TS</div>
+                        <div>
+                            <div>TechStore</div>
+                            <div style="font-size: 0.8rem; color: var(--text-light);">Seller Account</div>
+                        </div>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dashboard Section -->
+            <div id="dashboard-section" class="dashboard-section active-section">
+                <!-- Stats Cards -->
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-icon orders">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>42</h3>
+                            <p>Total Orders</p>
+                            <div class="stat-trend trend-up">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>12% from last month</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon revenue">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>$8,240</h3>
+                            <p>Total Revenue</p>
+                            <div class="stat-trend trend-up">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>8% from last month</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon products">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>24</h3>
+                            <p>Active Products</p>
+                            <div class="stat-trend trend-down">
+                                <i class="fas fa-arrow-down"></i>
+                                <span>2 from last month</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon customers">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>186</h3>
+                            <p>Total Customers</p>
+                            <div class="stat-trend trend-up">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>15% from last month</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Orders Section -->
+                <div class="dashboard-section">
+                    <div class="section-header">
+                        <h2>Recent Orders</h2>
+                        <a href="#" class="section-actions">
+                            View All <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="orders-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Date</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>#TB-2842</td>
+                                    <td>Ahmed Hassan</td>
+                                    <td>Jun 12, 2023</td>
+                                    <td>$420.00</td>
+                                    <td><span class="order-status status-delivered">Delivered</span></td>
+                                    <td><button class="btn btn-outline">View</button></td>
+                                </tr>
+                                <tr>
+                                    <td>#TB-2841</td>
+                                    <td>Sarah Mohamed</td>
+                                    <td>Jun 11, 2023</td>
+                                    <td>$320.50</td>
+                                    <td><span class="order-status status-shipped">Shipped</span></td>
+                                    <td><button class="btn btn-outline">Track</button></td>
+                                </tr>
+                                <tr>
+                                    <td>#TB-2840</td>
+                                    <td>Omar Khalid</td>
+                                    <td>Jun 10, 2023</td>
+                                    <td>$150.00</td>
+                                    <td><span class="order-status status-processing">Processing</span></td>
+                                    <td><button class="btn btn-outline">Process</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Section -->
+            <div id="products-section" class="dashboard-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Product Management</h2>
+                    <button class="btn btn-primary" id="addProductBtn">
+                        <i class="fas fa-plus"></i> Add New Product
+                    </button>
+                </div>
+                
+                <div class="products-grid" id="productsContainer">
+                    <!-- Products will be dynamically added here -->
+                </div>
+            </div>
+
+            <!-- Customers Section -->
+            <div id="customers-section" class="dashboard-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Customer Management</h2>
+                </div>
+                
+                <div class="table-responsive">
+                    <table class="orders-table">
+                        <thead>
+                            <tr>
+                                <th>Customer ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Total Orders</th>
+                                <th>Total Spent</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#C-1001</td>
+                                <td>Ahmed Hassan</td>
+                                <td>ahmed.hassan@email.com</td>
+                                <td>+249 123 456 789</td>
+                                <td>12</td>
+                                <td>$1,240.50</td>
+                                <td><button class="btn btn-outline">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>#C-1002</td>
+                                <td>Sarah Mohamed</td>
+                                <td>sarah.m@email.com</td>
+                                <td>+249 987 654 321</td>
+                                <td>8</td>
+                                <td>$890.75</td>
+                                <td><button class="btn btn-outline">View</button></td>
+                            </tr>
+                            <tr>
+                                <td>#C-1003</td>
+                                <td>Omar Khalid</td>
+                                <td>omar.khalid@email.com</td>
+                                <td>+249 555 123 456</td>
+                                <td>5</td>
+                                <td>$520.00</td>
+                                <td><button class="btn btn-outline">View</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Analytics Section -->
+            <div id="analytics-section" class="dashboard-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Sales Analytics</h2>
+                    <div>
+                        <select class="form-control" style="width: auto; display: inline-block;">
+                            <option>Last 7 days</option>
+                            <option>Last 30 days</option>
+                            <option>Last 3 months</option>
+                            <option>Last year</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="chart-container">
+                    <div class="chart-placeholder">
+                        <i class="fas fa-chart-bar fa-3x" style="margin-bottom: 10px;"></i>
+                        <p>Sales Analytics Dashboard</p>
+                        <p style="font-size: 0.9rem;">Revenue trends, popular products, and customer insights</p>
+                    </div>
+                </div>
+                
+                <div class="stats-cards">
+                    <div class="stat-card">
+                        <div class="stat-icon revenue">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>+18%</h3>
+                            <p>Revenue Growth</p>
+                            <div class="stat-trend trend-up">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>Compared to last month</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon products">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>MacBook Pro</h3>
+                            <p>Best Selling Product</p>
+                            <div class="stat-trend trend-up">
+                                <i class="fas fa-arrow-up"></i>
+                                <span>24 units sold this month</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings Section -->
+            <div id="settings-section" class="dashboard-section" style="display: none;">
+                <div class="section-header">
+                    <h2>Account Settings</h2>
+                </div>
+                
+                <div class="tabs">
+                    <div class="tab active" data-tab="profile">Profile</div>
+                    <div class="tab" data-tab="store">Store Settings</div>
+                    <div class="tab" data-tab="notifications">Notifications</div>
+                </div>
+                
+                <div class="tab-content active" id="profile-tab">
+                    <div class="form-group">
+                        <label for="storeName">Store Name</label>
+                        <input type="text" id="storeName" class="form-control" value="TechStore">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="storeDescription">Store Description</label>
+                        <textarea id="storeDescription" class="form-control">Your trusted partner for quality used electronics in Khartoum</textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" value="techstore@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" class="form-control" value="+249 123 456 789">
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary">Save Changes</button>
+                </div>
+                
+                <div class="tab-content" id="store-tab">
+                    <div class="form-group">
+                        <label for="currency">Currency</label>
+                        <select id="currency" class="form-control">
+                            <option>USD ($)</option>
+                            <option>SDG (ج.س)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="shipping">Shipping Options</label>
+                        <div>
+                            <input type="checkbox" id="freeShipping" checked>
+                            <label for="freeShipping">Free shipping in Khartoum</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="expressShipping">
+                            <label for="expressShipping">Express shipping (+$10)</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="returnPolicy">Return Policy</label>
+                        <select id="returnPolicy" class="form-control">
+                            <option>30-day return policy</option>
+                            <option>14-day return policy</option>
+                            <option>No returns accepted</option>
+                        </select>
+                    </div>
+                    
+                    <button class="btn btn-primary">Save Settings</button>
+                </div>
+                
+                <div class="tab-content" id="notifications-tab">
+                    <div class="form-group">
+                        <label>Email Notifications</label>
+                        <div>
+                            <input type="checkbox" id="newOrders" checked>
+                            <label for="newOrders">New orders</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="lowStock" checked>
+                            <label for="lowStock">Low stock alerts</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="reviews">
+                            <label for="reviews">New reviews</label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Push Notifications</label>
+                        <div>
+                            <input type="checkbox" id="pushOrders" checked>
+                            <label for="pushOrders">New orders</label>
+                        </div>
+                        <div>
+                            <input type="checkbox" id="pushMessages">
+                            <label for="pushMessages">Customer messages</label>
+                        </div>
+                    </div>
+                    
+                    <button class="btn btn-primary">Save Preferences</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add/Edit Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Add New Product</h2>
+                <button class="close-modal" id="closeModal">&times;</button>
+            </div>
+            <form id="productForm">
+                <div class="form-group">
+                    <label for="productName">Product Name</label>
+                    <input type="text" id="productName" class="form-control" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="productCategory">Category</label>
+                    <select id="productCategory" class="form-control" required>
+                        <option value="">Select Category</option>
+                        <option value="laptops">Laptops</option>
+                        <option value="smartphones">Smartphones</option>
+                        <option value="tablets">Tablets</option>
+                        <option value="accessories">Accessories</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="productDescription">Description</label>
+                    <textarea id="productDescription" class="form-control" required></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="productPrice">Price ($)</label>
+                        <input type="number" id="productPrice" class="form-control" step="0.01" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="productStock">Stock Quantity</label>
+                        <input type="number" id="productStock" class="form-control" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="productImage">Product Image</label>
+                    <input type="file" id="productImage" class="form-control" accept="image/*">
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" id="saveProductBtn">Save Product</button>
+                    <button type="button" class="btn btn-outline" id="cancelProductBtn">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js">
+      
+    </script>
+</body>
+</html>

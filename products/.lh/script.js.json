@@ -1,0 +1,18 @@
+{
+    "sourceFile": "script.js",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1758814184305,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1758814184305,
+            "name": "Commit-0",
+            "content": " // Wishlist functionality\r\n        document.querySelectorAll('.product-wishlist').forEach(button => {\r\n            button.addEventListener('click', function() {\r\n                const icon = this.querySelector('i');\r\n                if (icon.classList.contains('far')) {\r\n                    icon.classList.remove('far');\r\n                    icon.classList.add('fas', 'active');\r\n                } else {\r\n                    icon.classList.remove('fas', 'active');\r\n                    icon.classList.add('far');\r\n                }\r\n            });\r\n        });\r\n\r\n        // Add to cart functionality\r\n        document.querySelectorAll('.btn-add-cart').forEach(button => {\r\n            button.addEventListener('click', function() {\r\n                const currentCount = parseInt(document.querySelector('.cart-count').textContent);\r\n                document.querySelector('.cart-count').textContent = currentCount + 1;\r\n                \r\n                // Visual feedback\r\n                this.innerHTML = '<i class=\"fas fa-check\"></i> Added';\r\n                this.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';\r\n                \r\n                setTimeout(() => {\r\n                    this.innerHTML = '<i class=\"fas fa-shopping-cart\"></i> Add to Cart';\r\n                    this.style.background = 'linear-gradient(135deg, #18685b, #26575b)';\r\n                }, 1500);\r\n            });\r\n        });\r\n\r\n        // Filter functionality\r\n        document.querySelectorAll('.filter-option input').forEach(checkbox => {\r\n            checkbox.addEventListener('change', function() {\r\n                // In a real implementation, this would filter the products\r\n                console.log(`Filter changed: ${this.id} - ${this.checked}`);\r\n\r\n            });\r\n        });\r\n\r\n        // Sort functionality\r\n        document.querySelector('.sort-select').addEventListener('change', function() {\r\n            // In a real implementation, this would sort the products\r\n            console.log(`Sort by: ${this.value}`);\r\n        });"
+        }
+    ]
+}

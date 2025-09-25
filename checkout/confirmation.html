@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation - Tech Bazzar</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <img src="image/logo.png" alt="Tech Bazzar Logo" class="logo-img">
+                <p>Tech Bazzar</p>
+            </div>
+            
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="index.html#about" class="nav-link">About Us</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+                
+                <div class="nav-right">
+                    <button class="login-btn">
+                        <i class="fas fa-user"></i>
+                        <span>Login/Register</span>
+                    </button>
+                    <button class="language-btn" aria-label="Change language">
+                        <i class="fa-solid fa-globe"></i>
+                    </button>
+                    <a href="cart.html" class="cart-btn" aria-label="Shopping cart">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Confirmation Content -->
+    <div class="confirmation-container">
+        <div class="confirmation-card">
+            <div class="confirmation-header">
+                <i class="fas fa-check-circle"></i>
+                <h1>Order Confirmed!</h1>
+                <p>Thank you for your purchase</p>
+            </div>
+            
+            <div class="order-details">
+                <div class="detail-row">
+                    <span>Order ID:</span>
+                    <strong id="orderId">TB123456</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Order Date:</span>
+                    <span id="orderDate">January 15, 2024</span>
+                </div>
+                <div class="detail-row">
+                    <span>Total Amount:</span>
+                    <strong id="orderTotal">SDG 2,499</strong>
+                </div>
+                <div class="detail-row">
+                    <span>Payment Method:</span>
+                    <span id="paymentMethod">Bankak</span>
+                </div>
+            </div>
+            
+            <div class="confirmation-actions">
+                <a href="products.html" class="btn-primary">
+                    <i class="fas fa-shopping-bag"></i>
+                    Continue Shopping
+                </a>
+                <button class="btn-secondary" onclick="window.print()">
+                    <i class="fas fa-print"></i>
+                    Print Receipt
+                </button>
+            </div>
+            
+            <div class="delivery-info">
+                <h3><i class="fas fa-truck"></i> Delivery Information</h3>
+                <p>Your order will be delivered within 3-5 business days. You will receive a confirmation call from our delivery team.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load order data from localStorage
+        document.addEventListener('DOMContentLoaded', function() {
+            const orderData = JSON.parse(localStorage.getItem('orderConfirmation'));
+            
+            if (orderData) {
+                document.getElementById('orderId').textContent = orderData.orderId;
+                document.getElementById('orderDate').textContent = new Date(orderData.orderDate).toLocaleDateString();
+                document.getElementById('orderTotal').textContent = 'SDG ' + (orderData.totals.total * 600).toLocaleString();
+                document.getElementById('paymentMethod').textContent = this.formatPaymentMethod(orderData.paymentMethod);
+            }
+            
+            // Update cart count
+            const cartCount = document.querySelector('.cart-count');
+            cartCount.textContent = '0';
+        });
+
+        function formatPaymentMethod(method) {
+            const methods = {
+                'bankak': 'Bankak',
+                'ocash': 'O-Cash',
+                'cod': 'Cash on Delivery'
+            };
+            return methods[method] || method;
+        }
+    </script>
+</body>
+</html>

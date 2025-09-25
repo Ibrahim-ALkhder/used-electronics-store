@@ -1,0 +1,26 @@
+{
+    "sourceFile": "globals.css",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1758576218848,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1758577163132,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,18 +1,14 @@\n-@import url(\"https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css\");\r\n-* {\r\n-  -webkit-font-smoothing: antialiased;\r\n-  box-sizing: border-box;\r\n-}\r\n-html,\r\n-body {\r\n-  margin: 0px;\r\n-  height: 100%;\r\n-}\r\n-/* a blue color as a generic focus style */\r\n-button:focus-visible {\r\n-  outline: 2px solid #4a90e2 !important;\r\n-  outline: -webkit-focus-ring-color auto 5px !important;\r\n-}\r\n-a {\r\n-  text-decoration: none;\r\n-}\n\\ No newline at end of file\n+<!DOCTYPE html>\r\n+<html>\r\n+  <head>\r\n+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\r\n+    <meta charset=\"utf-8\" />\r\n+    <link rel=\"stylesheet\" href=\"globals.css\" />\r\n+    <link rel=\"stylesheet\" href=\"style.css\" />\r\n+  </head>\r\n+  <body>\r\n+    <div class=\"box\">\r\n+      <div class=\"group\"><img class=\"depth-frame\" src=\"img/depth-2-frame-2.png\" /></div>\r\n+    </div>\r\n+  </body>\r\n+</html>\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1758577181528,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,18 @@\n-<!DOCTYPE html>\r\n-<html>\r\n-  <head>\r\n-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\r\n-    <meta charset=\"utf-8\" />\r\n-    <link rel=\"stylesheet\" href=\"globals.css\" />\r\n-    <link rel=\"stylesheet\" href=\"style.css\" />\r\n-  </head>\r\n-  <body>\r\n-    <div class=\"box\">\r\n-      <div class=\"group\"><img class=\"depth-frame\" src=\"img/depth-2-frame-2.png\" /></div>\r\n-    </div>\r\n-  </body>\r\n-</html>\n\\ No newline at end of file\n+@import url(\"https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css\");\r\n+* {\r\n+  -webkit-font-smoothing: antialiased;\r\n+  box-sizing: border-box;\r\n+}\r\n+html,\r\n+body {\r\n+  margin: 0px;\r\n+  height: 100%;\r\n+}\r\n+/* a blue color as a generic focus style */\r\n+button:focus-visible {\r\n+  outline: 2px solid #4a90e2 !important;\r\n+  outline: -webkit-focus-ring-color auto 5px !important;\r\n+}\r\n+a {\r\n+  text-decoration: none;\r\n+}\n\\ No newline at end of file\n"
+                }
+            ],
+            "date": 1758576218848,
+            "name": "Commit-0",
+            "content": "@import url(\"https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css\");\r\n* {\r\n  -webkit-font-smoothing: antialiased;\r\n  box-sizing: border-box;\r\n}\r\nhtml,\r\nbody {\r\n  margin: 0px;\r\n  height: 100%;\r\n}\r\n/* a blue color as a generic focus style */\r\nbutton:focus-visible {\r\n  outline: 2px solid #4a90e2 !important;\r\n  outline: -webkit-focus-ring-color auto 5px !important;\r\n}\r\na {\r\n  text-decoration: none;\r\n}"
+        }
+    ]
+}
