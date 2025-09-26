@@ -15,8 +15,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('توجيه البائع إلى لوحة التحكم');
                 window.location.href = "../seller dashboard/seller dashboard.html";
             } else {
-                console.log('توجيه المشتري إلى الصفحة الرئيسية');
-                window.location.href = "../index.html";
+                console.log('توجيه المشتري إلى صفحة المنتجات');
+                window.location.href = "../products/products.html";
             }
         } else {
             console.log('لا يوجد مستخدم مسجل، عرض نموذج التسجيل');
@@ -191,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (role === 'seller') {
                     window.location.href = "../seller dashboard/seller dashboard.html";
                 } else {
-                    window.location.href = "../home/HOME.html";
+                    window.location.href = "../products/products.html";
                 }
             }, 1500);
         }

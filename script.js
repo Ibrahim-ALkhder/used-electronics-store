@@ -89,7 +89,7 @@ function updateLoginUI() {
         const existingUserProfile = document.querySelector('.user-profile-dropdown');
         if (existingUserProfile) {
             existingUserProfile.outerHTML = `
-                <a href="D:\\frotend_projects\\IN PROGRESS\\e-commerce project\\login\\login.html">
+                <a href="./login/login.html">
                     <button class="login-btn">
                         <i class="fas fa-user"></i>
                         <span>Login/Register</span>
@@ -565,7 +565,7 @@ class ShoppingCart {
                 <div class="empty-cart">
                     <i class="fas fa-shopping-cart"></i>
                     <p>Your cart is empty</p>
-                    <a href="/frotend_projects/IN PROGRESS/e-commerce project/products/products.html" class="btn-primary">Start Shopping</a>
+                    <a href="./products/products.html" class="btn-primary">Start Shopping</a>
                 </div>
             `;
             this.updateTotals(0, 0, 0);
@@ -675,7 +675,7 @@ class ShoppingCart {
             tax: this.calculateTax(),
             total: this.calculateTotal()
         }));
-        window.location.href = 'D:/frotend_projects/IN PROGRESS/e-commerce project/checkout/checkout.html';
+        window.location.href = './checkout/checkout.html';
     }
 
     calculateSubtotal() {
