@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الملف الشخصي - Tech Bazzar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* تنسيقات خاصة بصفحة البروفايل */
+        .profile-container {
+            max-width: 1200px;
+            margin: 80px auto 40px;
+            padding: 0 20px;
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: linear-gradient(135deg, #18685b, #26575b);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 40px;
+            position: relative;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .change-avatar-btn {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.9);
+            color: #26575b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .change-avatar-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        .profile-info h1 {
+            margin: 0 0 5px 0;
+            color: #26575b;
+            font-size: 1.8rem;
+        }
+
+        .profile-info p {
+            margin: 0 0 10px 0;
+            color: #666;
+        }
+
+        .role-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #ffd700;
+            color: #26575b;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .profile-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 30px;
+        }
+
+        .profile-sidebar {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: fit-content;
+            position: sticky;
+            top: 90px;
+        }
+
+        .profile-nav {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .profile-nav li {
+            margin-bottom: 10px;
+        }
+
+        .profile-nav a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            color: #333;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .profile-nav a:hover,
+        .profile-nav a.active {
+            background: #f0f7f5;
+            color: #18685b;
+        }
+
+        .profile-nav a i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .profile-main {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            color: #26575b;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f7f5;
+        }
+
+        .profile-form {
+            display: grid;
+            gap: 20px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #18685b;
+            box-shadow: 0 0 0 2px rgba(24, 104, 91, 0.1);
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #18685b, #26575b);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(24, 104, 91, 0.3);
+        }
+
+        .btn-secondary {
+            background: #f0f7f5;
+            color: #26575b;
+        }
+
+        .btn-secondary:hover {
+            background: #e0efe5;
+        }
+
+        .seller-only {
+            display: none;
+        }
+
+        .seller .seller-only {
+            display: block;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: #f8fafa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid #18685b;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #26575b;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* تنسيقات للهواتف */
+        @media (max-width: 768px) {
+            .profile-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-sidebar {
+                position: static;
+            }
+            
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-img">TB</div>
+                <p>Tech Bazzar</p>
+            </div>
+            
+            <div class="nav-menu">
+                <ul class="nav-links">
+                    <li><a href="HOME.html" class="nav-link">الرئيسية</a></li>
+                    <li><a href="products.html" class="nav-link">المنتجات</a></li>
+                    <li><a href="HOME.html#about" class="nav-link">من نحن</a></li>
+                    <li><a href="HOME.html#contact" class="nav-link">اتصل بنا</a></li>
+                    <li><a href="profile.html" class="nav-link active">الملف الشخصي</a></li>
+                </ul>
+                
+                <div class="nav-right">
+                    <div class="user-profile-dropdown">
+                        <button class="user-profile-btn">
+                            <div class="user-avatar">
+                                <i class="fas fa-user-circle"></i>
+                            </div>
+                            <span class="user-name">مستخدم</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="user-dropdown-menu">
+                            <div class="user-info">
+                                <div class="user-avatar-large">
+                                    <i class="fas fa-user-circle"></i>
+                                </div>
+                                <div class="user-details">
+                                    <h4 id="dropdownUserName">مستخدم</h4>
+                                    <p id="dropdownUserEmail">user@example.com</p>
+                                    <span class="user-role-badge" id="dropdownUserRole">مشتري</span>
+                                </div>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <a href="profile.html" class="dropdown-item">
+                                <i class="fas fa-user"></i>
+                                <span>الملف الشخصي</span>
+                            </a>
+                            <a href="orders.html" class="dropdown-item">
+                                <i class="fas fa-shopping-bag"></i>
+                                <span>طلباتي</span>
+                            </a>
+                            <a href="wishlist.html" class="dropdown-item">
+                                <i class="fas fa-heart"></i>
+                                <span>المفضلة</span>
+                            </a>
+                            <div id="sellerDashboardLink" class="seller-only">
+                                <a href="seller-dashboard.html" class="dropdown-item">
+                                    <i class="fas fa-store"></i>
+                                    <span>لوحة البائع</span>
+                                </a>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item" id="logoutBtn">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>تسجيل الخروج</span>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <button class="language-btn" aria-label="Change language">
+                        <i class="fa-solid fa-globe"></i>
+                    </button>
+                    <a href="#cart" class="cart-btn" aria-label="Shopping cart">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Container -->
+    <div class="profile-container">
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <i class="fas fa-user-circle" id="profileAvatarIcon"></i>
+                <div class="change-avatar-btn">
+                    <i class="fas fa-camera"></i>
+                </div>
+            </div>
+            <div class="profile-info">
+                <h1 id="profileUserName">مستخدم Tech Bazzar</h1>
+                <p id="profileUserEmail">user@example.com</p>
+                <span class="role-badge" id="profileUserRole">مشتري</span>
+            </div>
+        </div>
+        
+        <div class="profile-content">
+            <aside class="profile-sidebar">
+                <ul class="profile-nav">
+                    <li><a href="#personal" class="active"><i class="fas fa-user"></i> المعلومات الشخصية</a></li>
+                    <li><a href="#security"><i class="fas fa-shield-alt"></i> الأمان</a></li>
+                    <li class="seller-only"><a href="#store"><i class="fas fa-store"></i> معلومات المتجر</a></li>
+                    <li><a href="#orders"><i class="fas fa-shopping-bag"></i> الطلبات</a></li>
+                    <li class="seller-only"><a href="#products"><i class="fas fa-box"></i> إدارة المنتجات</a></li>
+                    <li><a href="#wishlist"><i class="fas fa-heart"></i> المفضلة</a></li>
+                    <li><a href="#settings"><i class="fas fa-cog"></i> الإعدادات</a></li>
+                </ul>
+            </aside>
+            
+            <main class="profile-main">
+                <div id="personal" class="profile-section active">
+                    <h2 class="section-title">المعلومات الشخصية</h2>
+                    
+                    <form class="profile-form" id="personalInfoForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">الاسم الأول</label>
+                                <input type="text" id="firstName" class="form-control" value="محمد">
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">الاسم الأخير</label>
+                                <input type="text" id="lastName" class="form-control" value="أحمد">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">البريد الإلكتروني</label>
+                            <input type="email" id="email" class="form-control" value="user@example.com">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">رقم الهاتف</label>
+                            <input type="tel" id="phone" class="form-control" value="+249 123 456 789">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="address">العنوان</label>
+                            <textarea id="address" class="form-control" rows="3">الخرطوم، السودان</textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">حفظ التغييرات</button>
+                            <button type="button" class="btn btn-secondary">إلغاء</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div id="store" class="profile-section seller-only">
+                    <h2 class="section-title">معلومات المتجر</h2>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number">15</div>
+                            <div class="stat-label">منتج نشط</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">42</div>
+                            <div class="stat-label">طلب مكتمل</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">4.8</div>
+                            <div class="stat-label">تقييم المتجر</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number">$2,450</div>
+                            <div class="stat-label">إجمالي المبيعات</div>
+                        </div>
+                    </div>
+                    
+                    <form class="profile-form" id="storeInfoForm">
+                        <div class="form-group">
+                            <label for="storeName">اسم المتجر</label>
+                            <input type="text" id="storeName" class="form-control" value="متجر Tech Bazzar">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="storeDescription">وصف المتجر</label>
+                            <textarea id="storeDescription" class="form-control" rows="4">متجر متخصص في بيع الأجهزة الإلكترونية المستعملة بجودة عالية وأسعار مناسبة.</textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="storeCategory">تصنيف المتجر</label>
+                            <select id="storeCategory" class="form-control">
+                                <option value="electronics">الإلكترونيات</option>
+                                <option value="computers">أجهزة الكمبيوتر</option>
+                                <option value="phones">الهواتف</option>
+                                <option value="accessories">الملحقات</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">حفظ معلومات المتجر</button>
+                        </div>
+                    </form>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // دالة للتحقق من حالة تسجيل الدخول وتحديث الواجهة
+        function checkLoginStatus() {
+            const userInfo = JSON.parse(localStorage.getItem('techBazzarUser'));
+            
+            if (!userInfo) {
+                // إذا لم يكن المستخدم مسجلاً، إعادة توجيه إلى صفحة التسجيل
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // تحديث الواجهة بناءً على معلومات المستخدم
+            updateProfileUI(userInfo);
+        }
+        
+        // دالة لتحديث واجهة البروفايل
+        function updateProfileUI(userInfo) {
+            // تحديث المعلومات في الهيدر
+            document.getElementById('profileUserName').textContent = userInfo.name || 'مستخدم Tech Bazzar';
+            document.getElementById('profileUserEmail').textContent = userInfo.email;
+            document.getElementById('profileUserRole').textContent = userInfo.role === 'seller' ? 'بائع' : 'مشتري';
+            
+            // تحديث القائمة المنسدلة
+            document.getElementById('dropdownUserName').textContent = userInfo.name || 'مستخدم';
+            document.getElementById('dropdownUserEmail').textContent = userInfo.email;
+            document.getElementById('dropdownUserRole').textContent = userInfo.role === 'seller' ? 'بائع' : 'مشتري';
+            
+            // إظهار أو إخفاء عناصر البائع
+            if (userInfo.role === 'seller') {
+                document.body.classList.add('seller');
+                document.getElementById('sellerDashboardLink').style.display = 'block';
+            } else {
+                document.body.classList.remove('seller');
+                document.getElementById('sellerDashboardLink').style.display = 'none';
+            }
+            
+            // ملء نموذج المعلومات الشخصية
+            if (userInfo.name) {
+                const nameParts = userInfo.name.split(' ');
+                document.getElementById('firstName').value = nameParts[0] || '';
+                document.getElementById('lastName').value = nameParts.slice(1).join(' ') || '';
+            }
+            
+            document.getElementById('email').value = userInfo.email;
+            document.getElementById('phone').value = userInfo.phone || '';
+            document.getElementById('address').value = userInfo.address || '';
+        }
+        
+        // تهيئة الصفحة عند التحميل
+        document.addEventListener('DOMContentLoaded', function() {
+            checkLoginStatus();
+            
+            // إعداد التنقل بين الأقسام
+            const navLinks = document.querySelectorAll('.profile-nav a');
+            const sections = document.querySelectorAll('.profile-section');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // تحديث الروابط النشطة
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // إظهار القسم المحدد
+                    const targetId = this.getAttribute('href').substring(1);
+                    sections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === targetId) {
+                            section.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // معالجة نموذج المعلومات الشخصية
+            document.getElementById('personalInfoForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // الحصول على البيانات من النموذج
+                const userInfo = JSON.parse(localStorage.getItem('techBazzarUser'));
+                userInfo.name = document.getElementById('firstName').value + ' ' + document.getElementById('lastName').value;
+                userInfo.phone = document.getElementById('phone').value;
+                userInfo.address = document.getElementById('address').value;
+                
+                // حفظ البيانات في localStorage
+                localStorage.setItem('techBazzarUser', JSON.stringify(userInfo));
+                
+                // تحديث الواجهة
+                updateProfileUI(userInfo);
+                
+                // عرض رسالة نجاح
+                alert('تم حفظ التغييرات بنجاح!');
+            });
+            
+            // معالجة نموذج معلومات المتجر (للبائع فقط)
+            document.getElementById('storeInfoForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // الحصول على بيانات المتجر
+                const storeInfo = {
+                    name: document.getElementById('storeName').value,
+                    description: document.getElementById('storeDescription').value,
+                    category: document.getElementById('storeCategory').value
+                };
+                
+                // حفظ بيانات المتجر
+                const userInfo = JSON.parse(localStorage.getItem('techBazzarUser'));
+                userInfo.store = storeInfo;
+                localStorage.setItem('techBazzarUser', JSON.stringify(userInfo));
+                
+                // عرض رسالة نجاح
+                alert('تم حفظ معلومات المتجر بنجاح!');
+            });
+            
+            // إعداد زر تسجيل الخروج
+            document.getElementById('logoutBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (confirm('هل أنت متأكد أنك تريد تسجيل الخروج؟')) {
+                    localStorage.removeItem('techBazzarUser');
+                    window.location.href = 'login.html';
+                }
+            });
+            
+            // إعداد زر تغيير الصورة
+            document.querySelector('.change-avatar-btn').addEventListener('click', function() {
+                alert('سيتم إضافة وظيفة تغيير الصورة في تحديث قادم!');
+            });
+        });
+    </script>
+</body>
+</html>

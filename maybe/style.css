@@ -1,0 +1,808 @@
+.stitch-design {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  background-color: #ffffff;
+}
+
+.stitch-design .depth-frame {
+  display: flex;
+  flex-direction: column;
+  min-height: 800px;
+  align-items: flex-start;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  background-color: #f6e8df;
+}
+
+.stitch-design .div {
+  display: flex;
+  flex-direction: column;
+  height: 1506px;
+  align-items: flex-start;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.stitch-design .depth-frame-2 {
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 40px;
+  flex: 0 0 auto;
+  background-color: #26575a;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: #e5e8ea;
+  display: flex;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.stitch-design .depth-frame-3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.stitch-design .div-wrapper {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.stitch-design .vector-wrapper {
+  position: relative;
+  flex: 1;
+  width: 16px;
+  flex-grow: 1;
+}
+
+.stitch-design .vector {
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: 13px;
+  height: 13px;
+}
+
+.stitch-design .text-wrapper {
+  position: relative;
+  align-self: stretch;
+  margin-top: -1.00px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 18px;
+  letter-spacing: 0;
+  line-height: 23px;
+  white-space: nowrap;
+}
+
+.stitch-design .depth-frame-4 {
+  position: relative;
+  flex: 1;
+  flex-grow: 1;
+}
+
+.stitch-design .depth-frame-5 {
+  display: inline-flex;
+  height: 40px;
+  align-items: center;
+  gap: 36px;
+  position: absolute;
+  top: 0;
+  left: 214px;
+}
+
+.stitch-design .text-wrapper-2 {
+  position: relative;
+  align-self: stretch;
+  margin-top: -1.00px;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+}
+
+.stitch-design .depth-frame-6 {
+  position: absolute;
+  top: 0;
+  left: 770px;
+  width: 133px;
+  height: 40px;
+}
+
+.stitch-design .depth-frame-wrapper {
+  display: inline-flex;
+  max-width: 480px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0px 10px;
+  position: absolute;
+  top: 0;
+  left: 188px;
+  background-color: #eff2f4;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.stitch-design .depth-frame-7 {
+  align-items: center;
+  flex: 1;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.stitch-design .img-wrapper {
+  position: relative;
+  flex: 1;
+  align-self: stretch;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.stitch-design .img {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px;
+  height: 16px;
+}
+
+.stitch-design .depth-frame-8 {
+  display: inline-flex;
+  min-width: 84px;
+  max-width: 480px;
+  height: 40px;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 16px;
+  position: absolute;
+  top: 0;
+  left: 27px;
+  background-color: #eff2f4;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.stitch-design .depth-frame-9 {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.stitch-design .text-wrapper-3 {
+  position: relative;
+  align-self: stretch;
+  margin-top: -1.00px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #111616;
+  font-size: 14px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 21px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.stitch-design .shopping-cart {
+  position: absolute;
+  top: 0;
+  left: 1011px;
+  width: 40px;
+  height: 40px;
+}
+
+.stitch-design .depth-frame-10 {
+  align-items: flex-start;
+  justify-content: center;
+  gap: 4px;
+  padding: 20px 0px;
+  flex: 1;
+  flex-grow: 1;
+  background-color: #bfccb2;
+  display: flex;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.stitch-design .depth-frame-11 {
+  display: inline-flex;
+  flex-direction: column;
+  max-width: 960px;
+  align-items: flex-start;
+  position: relative;
+  flex: 0 0 auto;
+  margin-bottom: -11.00px;
+  background-color: #dbe2e5;
+}
+
+.stitch-design .depth-frame-12 {
+  display: flex;
+  flex-direction: column;
+  width: 960px;
+  height: 512px;
+  align-items: flex-start;
+  position: relative;
+}
+
+.stitch-design .depth-frame-13 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px;
+  position: relative;
+  flex: 1;
+  align-self: stretch;
+  width: 100%;
+  flex-grow: 1;
+}
+
+.stitch-design .depth-frame-14 {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 480px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+}
+
+.stitch-design .depth-frame-15 {
+  display: flex;
+  flex-direction: column;
+  width: 796px;
+  align-items: flex-start;
+  gap: 8px;
+  position: absolute;
+  top: 286px;
+  left: 14px;
+}
+
+.stitch-design .depth-frame-16 {
+  display: flex;
+  align-items: flex-start;
+  align-self: stretch;
+  width: 100%;
+  flex-direction: column;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.stitch-design .text-wrapper-4 {
+  position: relative;
+  align-self: stretch;
+  margin-top: -1.00px;
+  font-family: "Inter-Black", Helvetica;
+  font-weight: 900;
+  color: #ffffff;
+  font-size: 48px;
+  letter-spacing: -2.00px;
+  line-height: 60px;
+}
+
+.stitch-design .depth-frame-17 {
+  display: flex;
+  flex-direction: column;
+  width: 281px;
+  align-items: flex-start;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.stitch-design .p {
+  position: relative;
+  width: 509px;
+  margin-top: -1.00px;
+  margin-right: -228.00px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+
+.stitch-design .depth-frame-18 {
+  display: inline-flex;
+  min-width: 84px;
+  max-width: 480px;
+  height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 0px 20px;
+  position: absolute;
+  top: 493px;
+  left: 404px;
+  background-color: #11a3ed;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.stitch-design .text-wrapper-5 {
+  position: relative;
+  align-self: stretch;
+  margin-top: -1.00px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 24px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.stitch-design .frame {
+  position: absolute;
+  top: 428px;
+  left: 360px;
+  width: 207px;
+  height: 40px;
+  display: flex;
+}
+
+.stitch-design .button {
+  all: unset;
+  box-sizing: border-box;
+  display: inline-flex;
+  width: 207px;
+  height: 40px;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  gap: var(--size-space-200);
+  padding: var(--size-space-300);
+  background-color: #89a78636;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid;
+  border-color: transparent;
+  backdrop-filter: blur(2.0px) brightness(100.0%) saturate(100.0%);
+  -webkit-backdrop-filter: blur(2.0px) brightness(100.0%) saturate(100.0%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 1px 0 0 rgba(
+      255,
+      255,
+      255,
+      0.32
+    ), inset 0 -1px 1px rgba(0, 0, 0, 0.13), inset -1px 0 1px rgba(
+      0,
+      0,
+      0,
+      0.11
+    );
+}
+
+.stitch-design .img-2 {
+  position: relative;
+  width: 16px;
+  height: 16px;
+}
+
+.stitch-design .button-2 {
+  position: relative;
+  width: fit-content;
+  margin-top: -1.00px;
+  font-family: var(--single-line-body-base-font-family);
+  font-weight: var(--single-line-body-base-font-weight);
+  color: #f5f5f5;
+  letter-spacing: var(--single-line-body-base-letter-spacing);
+  line-height: var(--single-line-body-base-line-height);
+  font-style: var(--single-line-body-base-font-style);
+  font-size: var(--single-line-body-base-font-size);
+}
+
+.stitch-design .depth-frame-19 {
+  position: relative;
+  width: 960px;
+  flex: 0 0 auto;
+}
+
+.stitch-design .text-wrapper-6 {
+  position: absolute;
+  top: calc(50.00% - 14px);
+  left: calc(50.00% - 69px);
+  width: 138px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #295b42;
+  font-size: 22px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 28px;
+}
+
+.stitch-design .depth-frame-20 {
+  position: relative;
+  width: 960px;
+  height: 290px;
+  background-color: #17685ae8;
+}
+
+.stitch-design .depth-frame-21 {
+  display: flex;
+  width: 876px;
+  align-items: flex-start;
+  gap: 12px;
+  position: relative;
+  top: 32px;
+  left: 42px;
+}
+
+.stitch-design .depth-frame-22 {
+  display: flex;
+  flex-direction: column;
+  width: 210px;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 0px 0px 12px;
+  position: relative;
+  align-self: stretch;
+}
+
+.stitch-design .depth-frame-23 {
+  height: 210px;
+  border-radius: 8px;
+  background-image: url(./img/depth-7-frame-0-10.png);
+  background-size: cover;
+  background-position: 50% 50%;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.stitch-design .text-wrapper-7 {
+  position: relative;
+  align-self: stretch;
+  margin-top: -1.00px;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+
+.stitch-design .depth-frame-24 {
+  height: 210px;
+  border-radius: 8px;
+  background-image: url(./img/depth-7-frame-0-7.png);
+  background-size: cover;
+  background-position: 50% 50%;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.stitch-design .depth-frame-25 {
+  height: 210px;
+  border-radius: 8px;
+  background-image: url(./img/depth-7-frame-0-6.png);
+  background-size: cover;
+  background-position: 50% 50%;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.stitch-design .depth-frame-26 {
+  height: 210px;
+  border-radius: 8px;
+  background-image: url(./img/image.png);
+  background-size: cover;
+  background-position: 50% 50%;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.stitch-design .text-wrapper-8 {
+  position: absolute;
+  top: 16px;
+  left: 390px;
+  width: 207px;
+  font-family: "Inter-Bold", Helvetica;
+  font-weight: 700;
+  color: #295a42;
+  font-size: 22px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 28px;
+}
+
+.stitch-design .depth-frame-27 {
+  position: relative;
+  width: 960px;
+  height: 250px;
+  background-color: #17685ae8;
+}
+
+.stitch-design .depth-frame-28 {
+  display: flex;
+  width: 901px;
+  height: 208px;
+  align-items: flex-start;
+  gap: 12px;
+  position: relative;
+  top: 24px;
+  left: 59px;
+}
+
+.stitch-design .depth-frame-29 {
+  display: flex;
+  flex-direction: column;
+  width: 210px;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 0px 0px 12px;
+  position: relative;
+  margin-bottom: -32.00px;
+}
+
+.stitch-design .depth-frame-30 {
+  position: relative;
+  width: 190px;
+  height: 150px;
+  border-radius: 8px;
+  background-image: url(./img/depth-7-frame-0-2.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.stitch-design .depth-frame-31 {
+  display: flex;
+  flex-direction: column;
+  height: 66px;
+  align-items: flex-start;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.stitch-design .text-wrapper-9 {
+  position: relative;
+  align-self: stretch;
+  margin-top: -1.00px;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  color: #ffffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+
+.stitch-design .text-wrapper-10 {
+  position: relative;
+  align-self: stretch;
+  margin-top: -1.00px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 14px;
+  letter-spacing: 0;
+  line-height: 21px;
+}
+
+.stitch-design .depth-frame-32 {
+  position: relative;
+  width: 190px;
+  height: 150px;
+  border-radius: 8px;
+  background-image: url(./img/depth-7-frame-0-3.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.stitch-design .depth-frame-33 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 0 0 auto;
+  margin-bottom: -32.00px;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+}
+
+.stitch-design .depth-frame-34 {
+  position: relative;
+  width: 190px;
+  height: 150px;
+  border-radius: 8px;
+  background-image: url(./img/depth-7-frame-0-8.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.stitch-design .like-new-smart-TV {
+  position: relative;
+  align-self: stretch;
+  margin-top: -1.00px;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  color: #f6ffff;
+  font-size: 16px;
+  letter-spacing: 0;
+  line-height: 24px;
+}
+
+.stitch-design .depth-frame-35 {
+  position: relative;
+  width: 190px;
+  height: 150px;
+  border-radius: 8px;
+  background-image: url(./img/depth-7-frame-0-9.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.stitch-design .depth-frame-36 {
+  position: relative;
+  width: 960px;
+  flex: 0 0 auto;
+  background-color: #17685ae8;
+}
+
+.stitch-design .depth-frame-37 {
+  display: flex;
+  width: 884px;
+  height: 208px;
+  align-items: flex-start;
+  gap: 12px;
+  position: relative;
+  top: 10px;
+  left: 55px;
+}
+
+.stitch-design .depth-frame-38 {
+  display: flex;
+  flex-direction: column;
+  width: 210px;
+  height: 222px;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 0px 0px 12px;
+  position: relative;
+  margin-bottom: -14.00px;
+}
+
+.stitch-design .depth-frame-39 {
+  position: relative;
+  width: 190px;
+  height: 150px;
+  border-radius: 8px;
+  background-image: url(./img/depth-7-frame-0-4.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.stitch-design .depth-frame-40 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  margin-bottom: -18.00px;
+}
+
+.stitch-design .depth-frame-41 {
+  width: 210px;
+  height: 170px;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 0px 0px 12px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.stitch-design .depth-frame-42 {
+  position: relative;
+  width: 190px;
+  height: 150px;
+  border-radius: 8px;
+  background-image: url(./img/depth-7-frame-0.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.stitch-design .depth-frame-43 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  margin-bottom: -70.00px;
+}
+
+.stitch-design .depth-frame-44 {
+  width: 210px;
+  height: 206px;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 0px 0px 12px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.stitch-design .depth-frame-45 {
+  position: relative;
+  width: 190px;
+  height: 150px;
+  border-radius: 8px;
+  background-image: url(./img/depth-7-frame-0-11.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.stitch-design .depth-frame-46 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  flex: 0 0 auto;
+  margin-bottom: -34.00px;
+}
+
+.stitch-design .depth-frame-47 {
+  width: 218px;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 0px 0px 12px;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.stitch-design .depth-frame-48 {
+  position: relative;
+  width: 190px;
+  height: 150px;
+  border-radius: 8px;
+  background-image: url(./img/depth-7-frame-0-5.png);
+  background-size: cover;
+  background-position: 50% 50%;
+}

@@ -1,4 +1,4 @@
-  // Sample product data
+// Sample product data
         const sampleProducts = [
             {
                 id: 1,
@@ -59,14 +59,63 @@
         const tabs = document.querySelectorAll('.tab');
         const tabContents = document.querySelectorAll('.tab-content');
 
+        // Logout elements
+        const logoutSidebar = document.getElementById('logout-sidebar');
+        const logoutTop = document.getElementById('logout-top');
+        const userDropdownToggle = document.getElementById('userDropdownToggle');
+        const userDropdown = document.getElementById('userDropdown');
+        const logoutModal = document.getElementById('logoutModal');
+        const cancelLogout = document.getElementById('cancelLogout');
+        const confirmLogout = document.getElementById('confirmLogout');
+
         // Initialize the dashboard
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('Loading seller dashboard...');
+            
+            // Check login status first
+            checkLoginStatus();
+            
             // Load products
             renderProducts();
             
             // Set up event listeners
             setupEventListeners();
         });
+
+        // Check if user is logged in and has seller role
+        function checkLoginStatus() {
+            const userInfo = JSON.parse(localStorage.getItem('techBazzarUser'));
+            
+            if (!userInfo || !userInfo.email) {
+                console.log('User not logged in, redirecting to login page');
+                window.location.href = "../login/login.html";
+                return;
+            }
+            
+            if (userInfo.role !== 'seller') {
+                console.log('User is not a seller, redirecting to home page');
+                window.location.href = "../home/HOME.html";
+                return;
+            }
+            
+            console.log('User logged in as seller:', userInfo.email);
+            // Update user info in the header
+            updateUserInfo(userInfo);
+        }
+
+        // Update user information in the header
+        function updateUserInfo(userInfo) {
+            const userAvatar = document.querySelector('.user-avatar');
+            const userName = document.querySelector('.user-menu div div:first-child');
+            
+            if (userAvatar) {
+                userAvatar.textContent = userInfo.name ? userInfo.name.charAt(0).toUpperCase() : 'TS';
+            }
+            
+            if (userName) {
+                userName.textContent = userInfo.name || 'TechStore';
+            }
+        }
 
         // Set up all event listeners
         function setupEventListeners() {
@@ -80,6 +129,11 @@
                 item.addEventListener('click', function(e) {
                     e.preventDefault();
                     const sectionId = this.getAttribute('data-section');
+                    
+                    if (this.id === 'logout-sidebar') {
+                        showLogoutModal();
+                        return;
+                    }
                     
                     // Update active menu item
                     menuItems.forEach(i => i.classList.remove('active'));
@@ -125,6 +179,46 @@
                 if (e.target === productModal) {
                     closeProductModal();
                 }
+                if (e.target === logoutModal) {
+                    closeLogoutModal();
+                }
+            });
+
+            // Logout functionality
+            logoutSidebar.addEventListener('click', function(e) {
+                e.preventDefault();
+                showLogoutModal();
+            });
+
+            logoutTop.addEventListener('click', function(e) {
+                e.preventDefault();
+                showLogoutModal();
+            });
+
+            // User dropdown toggle
+            userDropdownToggle.addEventListener('click', function(e) {
+                e.stopPropagation();
+                userDropdown.classList.toggle('active');
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function() {
+                userDropdown.classList.remove('active');
+            });
+
+            // Prevent dropdown from closing when clicking inside it
+            userDropdown.addEventListener('click', function(e) {
+                e.stopPropagation();
+            });
+
+            // Confirm logout
+            confirmLogout.addEventListener('click', function() {
+                performLogout();
+            });
+
+            // Cancel logout
+            cancelLogout.addEventListener('click', function() {
+                closeLogoutModal();
             });
         }
 
@@ -152,8 +246,10 @@
                 settings: { title: "Account Settings", subtitle: "Configure your store settings and preferences" }
             };
             
-            pageTitle.textContent = titles[sectionId].title;
-            pageSubtitle.textContent = titles[sectionId].subtitle;
+            if (titles[sectionId]) {
+                pageTitle.textContent = titles[sectionId].title;
+                pageSubtitle.textContent = titles[sectionId].subtitle;
+            }
         }
 
         // Render products in the products grid
@@ -230,7 +326,7 @@
                 description: document.getElementById('productDescription').value,
                 price: parseFloat(document.getElementById('productPrice').value),
                 stock: parseInt(document.getElementById('productStock').value),
-                image: document.getElementById('productCategory').value // Simplified mapping
+                image: document.getElementById('productCategory').value
             };
             
             if (editingProductId) {
@@ -249,6 +345,33 @@
             
             // Show success message
             alert(`Product ${editingProductId ? 'updated' : 'added'} successfully!`);
+        }
+
+        // Show logout confirmation modal
+        function showLogoutModal() {
+            logoutModal.style.display = 'flex';
+            userDropdown.classList.remove('active');
+        }
+
+        // Close logout confirmation modal
+        function closeLogoutModal() {
+            logoutModal.style.display = 'none';
+        }
+
+        // Perform logout
+        function performLogout() {
+            console.log('Logging out...');
+            
+            // Clear user data from localStorage
+            localStorage.removeItem('techBazzarUser');
+            
+            // Close modal
+            closeLogoutModal();
+            
+            // Redirect to login page after a short delay
+            setTimeout(() => {
+                window.location.href = "../login/login.html";
+            }, 500);
         }
 
         // Simulate chart loading

@@ -1,3 +1,19 @@
+// في دالة updateLoginUI، تحديث الرابط في القائمة المنسدلة
+function updateLoginUI() {
+    const userInfo = JSON.parse(localStorage.getItem('techBazzarUser'));
+    const navRight = document.querySelector('.nav-right');
+    
+    if (userInfo) {
+        // تحديث رابط البروفايل في القائمة المنسدلة
+        const profileLink = document.querySelector('.user-dropdown-menu a[href*="profile"]');
+        if (profileLink) {
+            profileLink.href = "D:/frotend_projects/IN PROGRESS/e-commerce project/profile/profile.html";
+        }
+        
+        // ... باقي الكود الحالي ...
+    }
+}
+
 // Navigation functionality
 document.addEventListener('DOMContentLoaded', function() {
     // Check login status and update UI
@@ -147,6 +163,235 @@ function logoutUser() {
 }
 
 // ... باقي كود السلة كما هو ...
+// Navigation functionality
+document.addEventListener('DOMContentLoaded', function() {
+    // Navigation elements
+    const nav = document.querySelector('nav');
+    const hamburgerBtn = document.querySelector('.hamburger-btn');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const mobileSearch = document.querySelector('.mobile-search');
+
+    // Check if elements exist before adding event listeners
+    if (!hamburgerBtn || !navMenu) return;
+
+    // Toggle mobile menu
+    hamburgerBtn.addEventListener('click', function() {
+        this.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        
+        // Toggle mobile search visibility
+        if (mobileSearch) {
+            mobileSearch.style.display = navMenu.classList.contains('active') ? 'block' : 'none';
+        }
+    });
+
+    // Close mobile menu when clicking on links
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            hamburgerBtn.classList.remove('active');
+            navMenu.classList.remove('active');
+            if (mobileSearch) {
+                mobileSearch.style.display = 'none';
+            }
+        });
+    });
+
+    // Nav scroll effect
+    if (nav) {
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+    }
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', function(event) {
+        if (!nav) return;
+        
+        const isClickInsideNav = nav.contains(event.target);
+        if (!isClickInsideNav && navMenu.classList.contains('active')) {
+            hamburgerBtn.classList.remove('active');
+            navMenu.classList.remove('active');
+            if (mobileSearch) {
+                mobileSearch.style.display = 'none';
+            }
+        }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            hamburgerBtn.classList.remove('active');
+            navMenu.classList.remove('active');
+            if (mobileSearch) {
+                mobileSearch.style.display = 'none';
+            }
+        }
+    });
+
+    // Smooth scrolling for anchor links
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            
+            if (href && href.startsWith('#')) {
+                e.preventDefault();
+                const targetId = href.substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset - 80;
+                    
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            }
+        });
+    });
+
+    // Contact form functionality
+    const form = document.querySelector('.contact-form-wrapper');
+    
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple validation
+            const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+            let isValid = true;
+            
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.style.borderColor = '#ff6b6b';
+                } else {
+                    input.style.borderColor = '#18685b';
+                }
+            });
+            
+            if (isValid) {
+                // Simulate form submission
+                const submitBtn = form.querySelector('.submit-btn');
+                if (!submitBtn) return;
+                
+                const originalText = submitBtn.innerHTML;
+                
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    submitBtn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                    submitBtn.style.background = '#28a745';
+                    
+                    setTimeout(() => {
+                        submitBtn.innerHTML = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.background = '';
+                        form.reset();
+                    }, 2000);
+                }, 1500);
+            }
+        });
+    }
+
+    // Section animation on scroll
+    const sections = document.querySelectorAll('section');
+    const links = document.querySelectorAll('nav a[data-target]');
+
+    // Smooth scroll for data-target links
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            const targetId = this.dataset.target;
+            const targetSection = document.getElementById(targetId);
+
+            if (targetSection) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: targetSection.offsetTop - 10,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+
+    // Add show class to sections when they become visible
+    function checkScroll() {
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            if (sectionTop < window.innerHeight - 100) {
+                section.classList.add('show');
+            }
+        });
+    }
+
+    // Check on scroll and on load
+    window.addEventListener('scroll', checkScroll);
+    checkScroll(); // Initial check
+
+    // Parallax and floating devices effect
+    const hero = document.querySelector('.hero');
+    const devices = document.querySelectorAll('.device');
+    
+    if (hero && devices.length > 0) {
+        // Parallax effect
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            hero.style.transform = `translateY(${rate}px)`;
+        });
+        
+        // Mouse move effect for devices
+        document.addEventListener('mousemove', function(e) {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            devices.forEach(device => {
+                const speed = parseFloat(device.getAttribute('data-speed')) || 0.03;
+                const xMove = (x - 0.5) * speed * 100;
+                const yMove = (y - 0.5) * speed * 100;
+                
+                device.style.transform = `translate(${xMove}px, ${yMove}px) rotate(var(--rotation, 0deg))`;
+            });
+        });
+        
+        // Typewriter effect for title
+        const title = document.querySelector('.hero-title');
+        if (title) {
+            const text = title.textContent;
+            title.textContent = '';
+            let i = 0;
+            
+            function typeWriter() {
+                if (i < text.length) {
+                    title.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 50);
+                }
+            }
+            
+            // Start typewriter effect after a delay
+            setTimeout(typeWriter, 500);
+        }
+    }
+    
+    // ==================== Shopping Cart Functionality ====================
+    // Initialize cart
+    const cart = new ShoppingCart();
+    window.cart = cart;
+
+    // Close cart with Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            cart.closeCart();
+        }
+    });
+});
 
 // Cart functionality
 class ShoppingCart {
@@ -159,69 +404,68 @@ class ShoppingCart {
         this.bindEvents();
         this.updateCartCount();
         this.renderCart();
+        this.initCheckoutButton();
     }
 
     bindEvents() {
         // Cart button click
-        document.querySelector('.cart-btn').addEventListener('click', (e) => {
-            e.preventDefault();
-            this.toggleCart();
-        });
+        const cartBtn = document.querySelector('.cart-btn');
+        if (cartBtn) {
+            cartBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                this.toggleCart();
+            });
+        }
 
         // Close cart modal
-        document.querySelector('.cart-close-btn').addEventListener('click', () => {
-            this.closeCart();
-        });
+        const closeBtn = document.querySelector('.cart-close-btn');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                this.closeCart();
+            });
+        }
 
         // Close cart when clicking outside
-        document.querySelector('.cart-modal-overlay').addEventListener('click', () => {
-            this.closeCart();
-        });
+        const overlay = document.querySelector('.cart-modal-overlay');
+        if (overlay) {
+            overlay.addEventListener('click', () => {
+                this.closeCart();
+            });
+        }
 
         // Continue shopping button
-        document.querySelector('.btn-continue-shopping').addEventListener('click', () => {
-            this.closeCart();
-        });
+        const continueBtn = document.querySelector('.btn-continue-shopping');
+        if (continueBtn) {
+            continueBtn.addEventListener('click', () => {
+                this.closeCart();
+            });
+        }
 
-        // Add to cart buttons
+        // Add to cart buttons (if any on home page)
         document.querySelectorAll('.btn-add-cart').forEach(button => {
             button.addEventListener('click', (e) => {
                 const productCard = e.target.closest('.product-card');
-                this.addToCart(productCard);
+                if (productCard) {
+                    this.addToCart(productCard);
+                }
             });
-        });
-
-        // Wishlist functionality
-        document.querySelectorAll('.product-wishlist').forEach(button => {
-            button.addEventListener('click', function() {
-                const icon = this.querySelector('i');
-                icon.classList.toggle('far');
-                icon.classList.toggle('fas');
-                icon.classList.toggle('active');
-            });
-        });
-
-        // Filter functionality
-        document.querySelectorAll('.filter-option input').forEach(checkbox => {
-            checkbox.addEventListener('change', function() {
-                console.log('Filter changed: ${this.id} - ${this.checked}');
-            });
-        });
-
-        // Sort functionality
-        document.querySelector('.sort-select').addEventListener('change', function() {
-            console.log('Sort by: ${this.value}');
         });
     }
 
     toggleCart() {
-        document.querySelector('.cart-modal').classList.toggle('active');
-        document.body.style.overflow = document.querySelector('.cart-modal').classList.contains('active') ? 'hidden' : '';
+        const cartModal = document.querySelector('.cart-modal');
+        if (cartModal) {
+            cartModal.classList.toggle('active');
+            document.body.style.overflow = cartModal.classList.contains('active') ? 'hidden' : '';
+        }
     }
 
     closeCart() {
-        document.querySelector('.cart-modal').classList.remove('active');
-        document.body.style.overflow = '';
+        const cartModal = document.querySelector('.cart-modal');
+        if (cartModal) {
+            cartModal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     }
 
     addToCart(productCard) {
@@ -239,10 +483,10 @@ class ShoppingCart {
         
         if (existingItem) {
             existingItem.quantity += 1;
-            this.showNotification('${product.title} quantity updated!', 'success');
+            this.showNotification(`${product.title} quantity updated!`, 'success');
         } else {
             this.cart.push(product);
-            this.showNotification('${product.title} added to cart!', 'success');
+            this.showNotification(`${product.title} added to cart!`, 'success');
         }
 
         this.saveCart();
@@ -251,14 +495,16 @@ class ShoppingCart {
         
         // Visual feedback on button
         const button = productCard.querySelector('.btn-add-cart');
-        const originalHTML = button.innerHTML;
-        button.innerHTML = '<i class="fas fa-check"></i> Added';
-        button.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
-        
-        setTimeout(() => {
-            button.innerHTML = originalHTML;
-            button.style.background = 'linear-gradient(135deg, #18685b, #26575b)';
-        }, 1500);
+        if (button) {
+            const originalHTML = button.innerHTML;
+            button.innerHTML = '<i class="fas fa-check"></i> Added';
+            button.style.background = 'linear-gradient(135deg, #4CAF50, #45a049)';
+            
+            setTimeout(() => {
+                button.innerHTML = originalHTML;
+                button.style.background = 'linear-gradient(135deg, #18685b, #26575b)';
+            }, 1500);
+        }
     }
 
     removeFromCart(productId) {
@@ -295,16 +541,20 @@ class ShoppingCart {
         const totalItems = this.cart.reduce((sum, item) => sum + item.quantity, 0);
         const cartCount = document.querySelector('.cart-count');
         
-        cartCount.textContent = totalItems;
-        cartCount.classList.add('updated');
-        
-        setTimeout(() => {
-            cartCount.classList.remove('updated');
-        }, 500);
+        if (cartCount) {
+            cartCount.textContent = totalItems;
+            cartCount.classList.add('updated');
+            
+            setTimeout(() => {
+                cartCount.classList.remove('updated');
+            }, 500);
+        }
     }
 
     renderCart() {
         const cartItems = document.getElementById('cartItems');
+        if (!cartItems) return;
+
         const cartSubtotal = document.querySelector('.cart-subtotal');
         const cartShipping = document.querySelector('.cart-shipping');
         const cartTax = document.querySelector('.cart-tax');
@@ -315,7 +565,7 @@ class ShoppingCart {
                 <div class="empty-cart">
                     <i class="fas fa-shopping-cart"></i>
                     <p>Your cart is empty</p>
-                    <a href="#products" class="btn-primary">Start Shopping</a>
+                    <a href="/frotend_projects/IN PROGRESS/e-commerce project/products/products.html" class="btn-primary">Start Shopping</a>
                 </div>
             `;
             this.updateTotals(0, 0, 0);
@@ -369,10 +619,15 @@ class ShoppingCart {
     }
 
     updateTotals(subtotal, shipping, tax, total = 0) {
-        document.querySelector('.cart-subtotal').textContent = `$${subtotal.toFixed(2)}`;
-        document.querySelector('.cart-shipping').textContent = `$${shipping.toFixed(2)}`;
-        document.querySelector('.cart-tax').textContent = `$${tax.toFixed(2)}`;
-        document.querySelector('.cart-total').textContent = `$${total.toFixed(2)}`;
+        const subtotalEl = document.querySelector('.cart-subtotal');
+        const shippingEl = document.querySelector('.cart-shipping');
+        const taxEl = document.querySelector('.cart-tax');
+        const totalEl = document.querySelector('.cart-total');
+        
+        if (subtotalEl) subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+        if (shippingEl) shippingEl.textContent = `$${shipping.toFixed(2)}`;
+        if (taxEl) taxEl.textContent = `$${tax.toFixed(2)}`;
+        if (totalEl) totalEl.textContent = `$${total.toFixed(2)}`;
     }
 
     showNotification(message, type = 'success') {
@@ -392,72 +647,50 @@ class ShoppingCart {
         setTimeout(() => {
             notification.classList.remove('active');
             setTimeout(() => {
-                document.body.removeChild(notification);
+                if (document.body.contains(notification)) {
+                    document.body.removeChild(notification);
+                }
             }, 300);
         }, 3000);
     }
+
+    initCheckoutButton() {
+        const checkoutBtn = document.querySelector('.btn-checkout');
+        if (checkoutBtn) {
+            checkoutBtn.onclick = () => {
+                if (this.cart.length > 0) {
+                    this.proceedToCheckout();
+                } else {
+                    this.showNotification('Your cart is empty!', 'error');
+                }
+            };
+        }
+    }
+
+    proceedToCheckout() {
+        localStorage.setItem('checkoutCart', JSON.stringify(this.cart));
+        localStorage.setItem('checkoutTotals', JSON.stringify({
+            subtotal: this.calculateSubtotal(),
+            shipping: this.calculateShipping(),
+            tax: this.calculateTax(),
+            total: this.calculateTotal()
+        }));
+        window.location.href = 'D:/frotend_projects/IN PROGRESS/e-commerce project/checkout/checkout.html';
+    }
+
+    calculateSubtotal() {
+        return this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    }
+
+    calculateShipping() {
+        return this.cart.length > 0 ? 10 : 0;
+    }
+
+    calculateTax() {
+        return this.calculateSubtotal() * 0.08;
+    }
+
+    calculateTotal() {
+        return this.calculateSubtotal() + this.calculateShipping() + this.calculateTax();
+    }
 }
-
-// Initialize cart when page loads
-const cart = new ShoppingCart();
-
-// Nav scroll effect
-window.addEventListener('scroll', function() {
-    const nav = document.querySelector('nav');
-    if (window.scrollY > 50) {
-        nav.classList.add('scrolled');
-    } else {
-        nav.classList.remove('scrolled');
-    }
-});
-
-// Close cart with Escape key
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        cart.closeCart();
-    }
-});
-
-// Add checkout and calculation methods inside the ShoppingCart class
-// (Place these methods inside the ShoppingCart class, after updateTotals)
-
-ShoppingCart.prototype.initCheckoutButton = function() {
-    const checkoutBtn = document.querySelector('.btn-checkout');
-    if (checkoutBtn) {
-        checkoutBtn.onclick = () => {
-            if (this.cart.length > 0) {
-                this.proceedToCheckout();
-            }
-        };
-    }
-};
-
-// Call this in the constructor or init method
-cart.initCheckoutButton();
-
-ShoppingCart.prototype.proceedToCheckout = function() {
-    localStorage.setItem('checkoutCart', JSON.stringify(this.cart));
-    localStorage.setItem('checkoutTotals', JSON.stringify({
-        subtotal: this.calculateSubtotal(),
-        shipping: this.calculateShipping(),
-        tax: this.calculateTax(),
-        total: this.calculateTotal()
-    }));
-    window.location.href = 'checkout.html';
-};
-
-ShoppingCart.prototype.calculateSubtotal = function() {
-    return this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-};
-
-ShoppingCart.prototype.calculateShipping = function() {
-    return this.cart.length > 0 ? 10 : 0;
-};
-
-ShoppingCart.prototype.calculateTax = function() {
-    return this.calculateSubtotal() * 0.08;
-};
-
-ShoppingCart.prototype.calculateTotal = function() {
-    return this.calculateSubtotal() + this.calculateShipping() + this.calculateTax();
-};

@@ -50,49 +50,66 @@
                     </div>
                 </div>
                 
-                <<!-- في قسم cart-summary، تأكد من وجود زر الدفع -->
                 <div class="cart-actions">
                     <button class="btn-continue-shopping">Continue Shopping</button>
-                    <a href="D:\frotend_projects\IN PROGRESS\e-commerce project\checkout\checkout.html"><button class="btn-checkout">Proceed to Checkout</button></a>
+                    <button class="btn-checkout">Proceed to Checkout</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">
-                <img src="../image/logo.png" alt="Tech Bazzar Logo" class="logo-img">
-                <p>Tech Bazzar</p>
-            </div>
+     <!-- Navigation Start -->
+   <nav>
+    <div class="nav-container">
+        <div class="logo">
+            <img src="..//image/logo.png" alt="Tech Bazzar Logo" class="logo-img">
+            <p>Tech Bazzar</p>
+        </div>
+
+        <!-- Hamburger Menu Button -->
+        <button class="hamburger-btn" aria-label="Toggle menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-menu">
+            <ul class="nav-links">
             
-            <div class="nav-menu">
-                <ul class="nav-links">
-                    <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="../index.html" class="nav-link">Home</a></li>
                     <li><a href="products.html" class="nav-link active">Products</a></li>
                     <li><a href="../index.html" class="nav-link">About Us</a></li>
-                    <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
-                </ul>
-                
-                <div class="nav-right">
-                    <a href="D:\frotend_projects\IN PROGRESS\e-commerce project\login\login.html"><button class="login-btn">
+                    <li><a href="..//index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+
+            <div class="nav-right">
+                 <a href="../login/login.html"><button class="login-btn" >
                     <i class="fas fa-user"></i>
                     <span>Login/Register</span>
                 </button></a>
-                    <button class="language-btn" aria-label="Change language">
-                        <i class="fa-solid fa-globe"></i>
-                    </button>
-                    <a href="#cart" class="cart-btn" aria-label="Shopping cart">
-                        <i class="fa-solid fa-cart-shopping"></i>
-                        <span class="cart-count">3</span>
-                    </a>
-                </div>
+                <button class="language-btn" aria-label="Change language">
+                    <i class="fa-solid fa-globe"></i>
+                </button>
+                <a href="#cart" class="cart-btn" aria-label="Shopping cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span class="cart-count">0</span>
+                </a>
             </div>
         </div>
-    </nav>
 
+        <!-- Mobile Search Bar -->
+        <div class="mobile-search">
+            <div class="search-container">
+                <input type="text" placeholder="Search products..." class="search-input">
+                <button class="search-btn" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- Navigation End -->
     <!-- Products Hero Section -->
     <section class="products-hero">
         <h1>Our Products</h1>
