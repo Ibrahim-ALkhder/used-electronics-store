@@ -38,7 +38,7 @@
 
         /* Navigation Styles */
         nav {
-            background: var(--card-bg);
+            background: #26575b;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
@@ -70,31 +70,59 @@
         .logo p {
             font-size: 1.5rem;
             font-weight: bold;
-            color: var(--primary-color);
+            color: white;
         }
 
-        .nav-menu {
-            display: flex;
-            align-items: center;
-            gap: 30px;
-        }
+ .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    transition: all 0.3s ease;
+}
 
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-        }
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+}
 
-        .nav-link {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
+.nav-link {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 8px 0;
+    position: relative;
+    transition: all 0.3s ease;
+}
 
-        .nav-link:hover {
-            color: var(--primary-color);
-        }
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #ffd700, #ff8c00);
+    transition: width 0.3s ease;
+}
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+        width: 100%;
+    }
+
+    .nav-link:hover {
+        color: #ffd700;
+    }
+
+    .nav-link.active {
+        color: #ffd700;
+    }
+
 
         .nav-right {
             display: flex;
@@ -105,7 +133,7 @@
         .cart-icon {
             position: relative;
             font-size: 1.2rem;
-            color: var(--primary-color);
+            color: w;
         }
 
         .cart-count {
@@ -485,7 +513,7 @@
     <nav>
         <div class="nav-container">
             <div class="logo">
-                <div class="logo-img" style="background: var(--primary-color); display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">TB</div>
+                <div class="logo-img" ><img src="../image/logo.png" alt=""></div>
                 <p>Tech Bazzar</p>
             </div>
 
@@ -506,8 +534,7 @@
                 <div class="nav-right" id="navRight">
                     <a href="../login/login.html" class="nav-link">Login</a>
                     <a href="../cart/cart.html" class="cart-icon">
-                        <i class="fas fa-shopping-cart"></i>
-                        <span class="cart-count">0</span>
+                        
                     </a>
                 </div>
             </div>
